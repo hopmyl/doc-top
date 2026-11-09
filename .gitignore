@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+out/
+
+# logs
+*.log
+
+# database (генерируется командой bun run db:push, содержит заявки)
+*.db
+*.db-journal
+
+# environment
+.env
+.env*.local
+
+# misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+next-env.d.ts
+
+# sandbox / temp artifacts (не часть сайта)
+examples/
+tests/
+scripts/
+Caddyfile
+.pages-test/
+.tmp-*/
+.zscripts/
+mini-services/
+skills/
+download/
+upload/
+agent-ctx/

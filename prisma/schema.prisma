@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Заявки с сайта: запись на приём, подбор врача, обратная связь
+model BookingRequest {
+  id            String   @id @default(cuid())
+  type          String // booking | selection | feedback
+  name          String
+  phone         String?
+  email         String?
+  target        String? // врач / клиника / услуга
+  preferredTime String? // удобное время
+  message       String?
+  createdAt     DateTime @default(now())
+}
