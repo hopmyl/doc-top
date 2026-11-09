@@ -49,11 +49,17 @@ bun run dev          # http://localhost:3000
 
 ### GitHub Pages (демо для заказчика)
 
-1. Запушьте репозиторий в ветку `main`.
-2. В настройках репозитория: **Settings → Pages → Build and deployment →
-   Source: GitHub Actions**.
-3. Workflow `.github/workflows/deploy-pages.yml` соберёт статическую версию и
-   опубликует её на `https://<логин>.github.io/<имя-репо>/`.
+Демо опубликовано и доступно: **https://hopmyl.github.io/doc-top/**
+
+Схема публикации — статическая сборка в ветке `gh-pages`:
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/doc-top bun run build:static   # результат в out/
+cd out && touch .nojekyll                             # без него Pages игнорирует _next/
+git init -b gh-pages && git add -A && git commit -m "deploy"
+git remote add origin https://github.com/hopmyl/doc-top.git
+git push origin gh-pages
+```
 
 В статической сборке (`build:static`) серверных API нет, поэтому формы
 работают в демонстрационном режиме: заявка «принимается», но никуда не
